@@ -12,4 +12,4 @@ test_cases = (
 
 @pytest.mark.parametrize(('input_x', 'expected'), test_cases)
 def test_hamming_weight(input_x, expected):
-    assert hamming_weight(input_x, expected)
+    assert hamming_weight(input_x) == expected

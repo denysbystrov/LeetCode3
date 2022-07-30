@@ -2,5 +2,7 @@
 
 
 def hamming_weight(n: int) -> int:
-    return 0
+    if n == 0:
+        return 0
+    return 1 + hamming_weight(n//2) if n % 2 == 1 else 0 + hamming_weight(n//2)
 
