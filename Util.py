@@ -95,3 +95,12 @@ def create_two_lists(arr_a, arr_b, intersection_idx):
     head_b = linked_list_b[0] if len(linked_list_b) > 0 else None
     return head_a, head_b, return_val
 
+
+def convert_list_to_array(node: ListNode) -> list:
+    num_array = []
+    current_node = node
+    while current_node:
+        num_array.append(current_node.val)
+        current_node = current_node.next
+
+    return num_array
