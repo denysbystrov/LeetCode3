@@ -1,6 +1,5 @@
 """Number 234: Palindrome Linked List"""
-from Util import ListNode
-import math
+from Util import ListNode, create_list_from_array
 
 
 def is_palindrome(head: ListNode) -> bool:
@@ -16,33 +15,24 @@ def is_palindrome(head: ListNode) -> bool:
         node.next = None
         return new_head
 
-    def find_len_list(node):
-        count = 0
-        while node:
-            count += 1
-            node = node.next
+    fast = head
+    slow = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
 
-        return count
-
-    middle_point = math.ceil(find_len_list(head)/2)
-
-    counter = 1
-    second_list_head = head
-    while counter <= middle_point and second_list_head:
-        second_list_head = second_list_head.next
-        counter += 1
-
-    second_list_head = reverse_list(second_list_head)
-
-    while second_list_head and head:
-        if second_list_head.val != head.val:
+    second_list = slow
+    second_list = reverse_list(second_list)
+    while head and second_list:
+        if second_list.val != head.val:
             return False
-        second_list_head = second_list_head.next
         head = head.next
+        second_list = second_list.next
 
     return True
 
 
-
+input_list = create_list_from_array([1, 2], -1)
+print(is_palindrome(input_list))
 
 
